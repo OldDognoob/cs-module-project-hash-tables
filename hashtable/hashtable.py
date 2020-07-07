@@ -226,6 +226,11 @@ class HashTable:
         Implement this.
         """
         # Your code here
+        # increase the size of our hash table
+        # we cant however take the first element in the previous hash table and put it in our new one
+        # we need to create a new linked list
+        
+
 
 
 
