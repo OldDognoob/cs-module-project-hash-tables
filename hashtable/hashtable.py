@@ -122,12 +122,64 @@ class HashTable:
 
         Implement this.
         """
+        """
+        index = self.hash_index(key)
+        node = self.storage[index]
+        if node is not None:
+            while node:
+                if node.key == key:
+                    return node.value
+                node = node.next
+        return node
+        """
+        """
+        # determine the index
+        # iterate to the end of the list or find the key 
+        # if the key is not found return None
+        # otherwise remove the node from the list and return the value of the node
+        index = self.hash_index(key)
+        node = self.storage[index]
+        prev = None
+        while node is None and node.key !=key:
+            prev = node
+            node =node.next
+        # either node is the node we looking for or none
+        if node is None:
+            # the key is not there
+            return None
+        else:
+            # key is there
+            self.size -=1
+            total = node.value
+            # delete it from the list
+            if prev is None:
+                node = None
+            else:
+                prev.next = prev.next .next
+            return total
+        """
+
         # Your code here
-       
-
-       
-        
-
+        # define index
+        index = self.hash_index(key)
+        # set the addressing node in our hash
+        node = self.storage[index]
+        # set prev to None
+        prev = None
+        # if the list is empty there is no item to iterate
+        # and so we print the warning statement that list is empty
+        if self.storage[index] is None:
+            print("Warning list is empty")
+            return
+        else:
+            if node.next is None:
+                self.storage[index] = None
+                self.usage -= 1
+            else:
+                while node.key != key:
+                    prev = node
+                    node = node.next
+                prev.next = node.next
 
     def get(self, key):
         """
@@ -138,6 +190,14 @@ class HashTable:
         Implement this.
         """
         # Your code here
+        index = self.hash_index(key)
+        node = self.storage[index]
+        if node is not None:
+            while node:
+                if node.key == key:
+                    return node.value
+                node = node.next
+        return node
         
        
 
