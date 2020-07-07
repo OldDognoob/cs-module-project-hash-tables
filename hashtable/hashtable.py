@@ -52,6 +52,7 @@ class HashTable:
         """
         # Your code here
         
+        
 
 
     def fnv1(self, key):
@@ -199,11 +200,6 @@ class HashTable:
                 node = node.next
         return node
         
-       
-
-      
-
-
     def resize(self, new_capacity):
         """
         Changes the capacity of the hash table and
