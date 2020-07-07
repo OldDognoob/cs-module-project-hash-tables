@@ -51,7 +51,11 @@ class HashTable:
         Implement this.
         """
         # Your code here
-        
+        # n = number of buckets stored in the hash table
+        # m = number of capacity in table
+        return self.usage/self.capacity
+
+
         
 
 
@@ -63,6 +67,7 @@ class HashTable:
         """
 
         # Your code here
+
 
 
     def djb2(self, key):
