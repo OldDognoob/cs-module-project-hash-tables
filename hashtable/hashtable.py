@@ -99,12 +99,12 @@ class HashTable:
         Implement this.
         """
         # Your code here
+        """
         index = self.hash_index(key)
         self.storage[index] = HashTableEntry(key, value)
         return value
-
-
         """
+
         # hash_index creates the hash value of the key
         index = self.hash_index(key)
         # create a new Linked List to assign our HashTableEntry
@@ -117,7 +117,7 @@ class HashTable:
             node.next = node
         else:
             node = ht
-        """
+        
 
 
     def delete(self, key):
