@@ -99,25 +99,19 @@ class HashTable:
         Implement this.
         """
         # Your code here
-        """
+        # the hash_index creates our index value based to the key
         index = self.hash_index(key)
-        self.storage[index] = HashTableEntry(key, value)
-        return value
-        """
-
-        # hash_index creates the hash value of the key
-        index = self.hash_index(key)
-        # create a new Linked List to assign our HashTableEntry
+        # we create a new Linked List
         ht = HashTableEntry(key, value)
-        # we find the corresponding node in our hash
+        # we are corresponding to the addressing node in our index
         node = self.storage[index]
-        # we set out the node to None
-        if node is None:
-            node = ht
-            node.next = node
+        # if the node exists already,we check the next node.
+        if node is not None:
+            self.storage[index] = ht
+            self.storage[index].next = node
+        # Otherwise we need to put the thing here.
         else:
-            node = ht
-        
+            self.storage[index] = ht
 
 
     def delete(self, key):
@@ -129,9 +123,10 @@ class HashTable:
         Implement this.
         """
         # Your code here
-        index = self.hash_index(key)
-        self.storage[index] = None
+       
 
+       
+        
 
 
     def get(self, key):
@@ -143,10 +138,9 @@ class HashTable:
         Implement this.
         """
         # Your code here
-        index = self.hash_index(key)
-        if self.storage[index] is not None:
-            return self.storage[index].value
-    
+        
+       
+
       
 
 
