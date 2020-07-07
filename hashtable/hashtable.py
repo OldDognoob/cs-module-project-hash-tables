@@ -67,6 +67,19 @@ class HashTable:
         """
 
         # Your code here
+        FNV_Prime = 0x00000100000001b3
+        FNV_offset_basis = 0xcbf29ce484222325
+
+        hash_value = FNV_offset_basis
+        bytes_of_data = key.encode()
+
+        for b in bytes_of_data:
+            hash_value = (hash_value * FNV_Prime)
+            hash_value = hash_value ^ b
+        return hash_value
+        
+
+
 
 
 
