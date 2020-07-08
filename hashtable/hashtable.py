@@ -117,21 +117,33 @@ class HashTable:
 
         Implement this.
         """
+        
         # Your code here
         # the hash_index creates our index value based to the key
         index = self.hash_index(key)
         # we create a new Linked List
         ht = HashTableEntry(key, value)
         # we are corresponding to the addressing node in our index
+        prev_node = self.storage[index]
+        # addressing to the node in our index
         node = self.storage[index]
         # if the node exists already,we check the next node.
-        if node is not None:
-            self.storage[index] = ht
-            self.storage[index].next = node
+        if self.storage[index] is not None:
+            prev_node = self.storage[index]
+            while prev_node:
+                if node.key == key:
+                    node.value = value
+                    return
+                if node.next is None:
+                    node.next = ht
+                    return
+                node = node.next
         # Otherwise we need to put the thing here.
         else:
             self.storage[index] = ht
-
+        
+        
+            
 
     def delete(self, key):
         """
@@ -184,7 +196,7 @@ class HashTable:
         # set the addressing node in our hash
         node = self.storage[index]
         # set prev to None
-        prev = None
+        prev_node = None
         # if the list is empty there is no item to iterate
         # and so we print the warning statement that list is empty
         if self.storage[index] is None:
@@ -196,9 +208,12 @@ class HashTable:
                 self.usage -= 1
             else:
                 while node.key != key:
-                    prev = node
+                    prev_node = node
                     node = node.next
-                prev.next = node.next
+                if node.key == self.storage[index].key:
+                    self.storage[index] = node.next
+                elif node.key == key:
+                    prev_node.next = node.next
 
     def get(self, key):
         """
